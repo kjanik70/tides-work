@@ -1,0 +1,886 @@
+BEGIN:VCALENDAR
+PRODID:-//ChatGPT//Tillamook Negative Low Tides//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+END:STANDARD
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:tillamook-neg-low-1@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251021T191400
+DTEND;TZID=America/Los_Angeles:20251021T194400
+SUMMARY:Low tide -0.20 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.20 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-2@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251022T194600
+DTEND;TZID=America/Los_Angeles:20251022T201600
+SUMMARY:Low tide -0.32 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.32 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-3@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251103T162900
+DTEND;TZID=America/Los_Angeles:20251103T165900
+SUMMARY:Low tide -0.31 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.31 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-4@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251104T171400
+DTEND;TZID=America/Los_Angeles:20251104T174400
+SUMMARY:Low tide -1.29 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.29 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-5@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251105T180000
+DTEND;TZID=America/Los_Angeles:20251105T183000
+SUMMARY:Low tide -1.96 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.96 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-6@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251106T184700
+DTEND;TZID=America/Los_Angeles:20251106T191700
+SUMMARY:Low tide -2.24 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.24 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-7@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251107T193700
+DTEND;TZID=America/Los_Angeles:20251107T200700
+SUMMARY:Low tide -2.13 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.13 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-8@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251118T172000
+DTEND;TZID=America/Los_Angeles:20251118T175000
+SUMMARY:Low tide -0.09 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.09 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-9@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251119T175300
+DTEND;TZID=America/Los_Angeles:20251119T182300
+SUMMARY:Low tide -0.34 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.34 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-10@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251120T182700
+DTEND;TZID=America/Los_Angeles:20251120T185700
+SUMMARY:Low tide -0.44 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.44 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-11@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251121T190100
+DTEND;TZID=America/Los_Angeles:20251121T193100
+SUMMARY:Low tide -0.42 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.42 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-12@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251122T193800
+DTEND;TZID=America/Los_Angeles:20251122T200800
+SUMMARY:Low tide -0.31 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.31 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-13@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251202T161000
+DTEND;TZID=America/Los_Angeles:20251202T164000
+SUMMARY:Low tide -0.80 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.80 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-14@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251203T165900
+DTEND;TZID=America/Los_Angeles:20251203T172900
+SUMMARY:Low tide -1.63 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.63 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-15@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251204T174800
+DTEND;TZID=America/Los_Angeles:20251204T181800
+SUMMARY:Low tide -2.14 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.14 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-16@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251205T183700
+DTEND;TZID=America/Los_Angeles:20251205T190700
+SUMMARY:Low tide -2.30 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.30 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-17@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251206T192600
+DTEND;TZID=America/Los_Angeles:20251206T195600
+SUMMARY:Low tide -2.13 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.13 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-18@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251218T173700
+DTEND;TZID=America/Los_Angeles:20251218T180700
+SUMMARY:Low tide -0.20 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.20 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-19@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251219T181200
+DTEND;TZID=America/Los_Angeles:20251219T184200
+SUMMARY:Low tide -0.40 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.40 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-20@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251220T184800
+DTEND;TZID=America/Los_Angeles:20251220T191800
+SUMMARY:Low tide -0.51 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.51 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-21@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251221T192300
+DTEND;TZID=America/Los_Angeles:20251221T195300
+SUMMARY:Low tide -0.54 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.54 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-22@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251222T195900
+DTEND;TZID=America/Los_Angeles:20251222T202900
+SUMMARY:Low tide -0.47 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.47 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-23@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20251231T155600
+DTEND;TZID=America/Los_Angeles:20251231T162600
+SUMMARY:Low tide -0.83 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.83 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-24@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260101T164900
+DTEND;TZID=America/Los_Angeles:20260101T171900
+SUMMARY:Low tide -1.43 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.43 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-25@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260102T174000
+DTEND;TZID=America/Los_Angeles:20260102T181000
+SUMMARY:Low tide -1.83 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.83 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-26@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260103T182800
+DTEND;TZID=America/Los_Angeles:20260103T185800
+SUMMARY:Low tide -1.96 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.96 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-27@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260104T191300
+DTEND;TZID=America/Los_Angeles:20260104T194300
+SUMMARY:Low tide -1.80 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.80 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-28@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260105T195700
+DTEND;TZID=America/Los_Angeles:20260105T202700
+SUMMARY:Low tide -1.38 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.38 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-29@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260116T171900
+DTEND;TZID=America/Los_Angeles:20260116T174900
+SUMMARY:Low tide -0.06 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.06 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-30@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260117T175500
+DTEND;TZID=America/Los_Angeles:20260117T182500
+SUMMARY:Low tide -0.40 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.40 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-31@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260118T182900
+DTEND;TZID=America/Los_Angeles:20260118T185900
+SUMMARY:Low tide -0.63 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.63 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-32@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260119T190100
+DTEND;TZID=America/Los_Angeles:20260119T193100
+SUMMARY:Low tide -0.71 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.71 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-33@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260120T193400
+DTEND;TZID=America/Los_Angeles:20260120T200400
+SUMMARY:Low tide -0.61 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.61 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-34@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260129T154600
+DTEND;TZID=America/Los_Angeles:20260129T161600
+SUMMARY:Low tide -0.54 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.54 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-35@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260130T164100
+DTEND;TZID=America/Los_Angeles:20260130T171100
+SUMMARY:Low tide -1.05 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.05 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-36@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260131T173000
+DTEND;TZID=America/Los_Angeles:20260131T180000
+SUMMARY:Low tide -1.37 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.37 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-37@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260201T181400
+DTEND;TZID=America/Los_Angeles:20260201T184400
+SUMMARY:Low tide -1.44 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.44 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-38@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260202T185400
+DTEND;TZID=America/Los_Angeles:20260202T192400
+SUMMARY:Low tide -1.24 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.24 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-39@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260203T193200
+DTEND;TZID=America/Los_Angeles:20260203T200200
+SUMMARY:Low tide -0.79 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.79 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-40@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260215T172800
+DTEND;TZID=America/Los_Angeles:20260215T175800
+SUMMARY:Low tide -0.28 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.28 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-41@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260216T180100
+DTEND;TZID=America/Los_Angeles:20260216T183100
+SUMMARY:Low tide -0.51 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.51 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-42@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260217T183300
+DTEND;TZID=America/Los_Angeles:20260217T190300
+SUMMARY:Low tide -0.52 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.52 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-43@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260218T190400
+DTEND;TZID=America/Los_Angeles:20260218T193400
+SUMMARY:Low tide -0.29 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.29 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-44@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260227T153400
+DTEND;TZID=America/Los_Angeles:20260227T160400
+SUMMARY:Low tide -0.24 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.24 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-45@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260228T162700
+DTEND;TZID=America/Los_Angeles:20260228T165700
+SUMMARY:Low tide -0.57 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.57 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-46@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260301T171200
+DTEND;TZID=America/Los_Angeles:20260301T174200
+SUMMARY:Low tide -0.71 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.71 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-47@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260302T175100
+DTEND;TZID=America/Los_Angeles:20260302T182100
+SUMMARY:Low tide -0.64 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.64 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-48@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260303T182700
+DTEND;TZID=America/Los_Angeles:20260303T185700
+SUMMARY:Low tide -0.34 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.34 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-49@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260317T182300
+DTEND;TZID=America/Los_Angeles:20260317T185300
+SUMMARY:Low tide -0.01 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.01 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-50@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260321T084300
+DTEND;TZID=America/Los_Angeles:20260321T091300
+SUMMARY:Low tide -0.66 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.66 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-51@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260322T093000
+DTEND;TZID=America/Los_Angeles:20260322T100000
+SUMMARY:Low tide -0.77 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.77 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-52@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260323T102200
+DTEND;TZID=America/Los_Angeles:20260323T105200
+SUMMARY:Low tide -0.62 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.62 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-53@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260324T112300
+DTEND;TZID=America/Los_Angeles:20260324T115300
+SUMMARY:Low tide -0.29 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.29 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-54@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260403T080000
+DTEND;TZID=America/Los_Angeles:20260403T083000
+SUMMARY:Low tide -0.28 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.28 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-55@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260404T083500
+DTEND;TZID=America/Los_Angeles:20260404T090500
+SUMMARY:Low tide -0.28 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.28 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-56@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260405T091100
+DTEND;TZID=America/Los_Angeles:20260405T094100
+SUMMARY:Low tide -0.12 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.12 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-57@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260419T082700
+DTEND;TZID=America/Los_Angeles:20260419T085700
+SUMMARY:Low tide -1.92 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.92 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-58@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260420T091600
+DTEND;TZID=America/Los_Angeles:20260420T094600
+SUMMARY:Low tide -1.82 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.82 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-59@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260421T101000
+DTEND;TZID=America/Los_Angeles:20260421T104000
+SUMMARY:Low tide -1.45 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.45 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-60@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260422T111000
+DTEND;TZID=America/Los_Angeles:20260422T114000
+SUMMARY:Low tide -0.92 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.92 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-61@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260423T121600
+DTEND;TZID=America/Los_Angeles:20260423T124600
+SUMMARY:Low tide -0.38 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.38 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-62@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260503T081200
+DTEND;TZID=America/Los_Angeles:20260503T084200
+SUMMARY:Low tide -0.80 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.80 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-63@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260504T084800
+DTEND;TZID=America/Los_Angeles:20260504T091800
+SUMMARY:Low tide -0.63 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.63 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-64@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260505T092600
+DTEND;TZID=America/Los_Angeles:20260505T095600
+SUMMARY:Low tide -0.38 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.38 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-65@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260506T100800
+DTEND;TZID=America/Los_Angeles:20260506T103800
+SUMMARY:Low tide -0.08 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.08 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-66@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260518T081400
+DTEND;TZID=America/Los_Angeles:20260518T084400
+SUMMARY:Low tide -2.62 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.62 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-67@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260519T090500
+DTEND;TZID=America/Los_Angeles:20260519T093500
+SUMMARY:Low tide -2.40 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.40 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-68@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260520T095800
+DTEND;TZID=America/Los_Angeles:20260520T102800
+SUMMARY:Low tide -1.94 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.94 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-69@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260521T105400
+DTEND;TZID=America/Los_Angeles:20260521T112400
+SUMMARY:Low tide -1.32 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.32 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-70@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260522T115100
+DTEND;TZID=America/Los_Angeles:20260522T122100
+SUMMARY:Low tide -0.62 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.62 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-71@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260602T083000
+DTEND;TZID=America/Los_Angeles:20260602T090000
+SUMMARY:Low tide -0.96 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.96 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-72@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260603T090800
+DTEND;TZID=America/Los_Angeles:20260603T093800
+SUMMARY:Low tide -0.83 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.83 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-73@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260604T094600
+DTEND;TZID=America/Los_Angeles:20260604T101600
+SUMMARY:Low tide -0.63 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.63 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-74@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260605T102500
+DTEND;TZID=America/Los_Angeles:20260605T105500
+SUMMARY:Low tide -0.37 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.37 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-75@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260606T110600
+DTEND;TZID=America/Los_Angeles:20260606T113600
+SUMMARY:Low tide -0.04 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.04 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-76@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260616T080400
+DTEND;TZID=America/Los_Angeles:20260616T083400
+SUMMARY:Low tide -2.82 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.82 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-77@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260617T085300
+DTEND;TZID=America/Los_Angeles:20260617T092300
+SUMMARY:Low tide -2.56 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.56 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-78@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260618T094200
+DTEND;TZID=America/Los_Angeles:20260618T101200
+SUMMARY:Low tide -2.05 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.05 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-79@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260619T103000
+DTEND;TZID=America/Los_Angeles:20260619T110000
+SUMMARY:Low tide -1.34 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.34 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-80@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260620T111800
+DTEND;TZID=America/Los_Angeles:20260620T114800
+SUMMARY:Low tide -0.50 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.50 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-81@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260701T081300
+DTEND;TZID=America/Los_Angeles:20260701T084300
+SUMMARY:Low tide -1.17 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.17 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-82@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260702T084700
+DTEND;TZID=America/Los_Angeles:20260702T091700
+SUMMARY:Low tide -1.11 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.11 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-83@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260703T092000
+DTEND;TZID=America/Los_Angeles:20260703T095000
+SUMMARY:Low tide -0.92 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.92 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-84@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260704T095300
+DTEND;TZID=America/Los_Angeles:20260704T102300
+SUMMARY:Low tide -0.59 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.59 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-85@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260705T102800
+DTEND;TZID=America/Los_Angeles:20260705T105800
+SUMMARY:Low tide -0.10 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.10 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-86@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260716T083500
+DTEND;TZID=America/Los_Angeles:20260716T090500
+SUMMARY:Low tide -2.26 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -2.26 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-87@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260717T091800
+DTEND;TZID=America/Los_Angeles:20260717T094800
+SUMMARY:Low tide -1.67 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.67 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-88@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260718T095900
+DTEND;TZID=America/Los_Angeles:20260718T102900
+SUMMARY:Low tide -0.87 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.87 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-89@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260731T081800
+DTEND;TZID=America/Los_Angeles:20260731T084800
+SUMMARY:Low tide -1.03 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.03 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-90@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260801T084900
+DTEND;TZID=America/Los_Angeles:20260801T091900
+SUMMARY:Low tide -0.73 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.73 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-91@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260802T092000
+DTEND;TZID=America/Los_Angeles:20260802T095000
+SUMMARY:Low tide -0.25 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.25 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-92@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260814T080900
+DTEND;TZID=America/Los_Angeles:20260814T083900
+SUMMARY:Low tide -1.42 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -1.42 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-93@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260815T084600
+DTEND;TZID=America/Los_Angeles:20260815T091600
+SUMMARY:Low tide -0.75 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.75 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-94@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20260927T193700
+DTEND;TZID=America/Los_Angeles:20260927T200700
+SUMMARY:Low tide -0.44 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.44 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-95@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20261010T190400
+DTEND;TZID=America/Los_Angeles:20261010T193400
+SUMMARY:Low tide -0.46 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.46 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+BEGIN:VEVENT
+UID:tillamook-neg-low-96@generated
+DTSTAMP:20251013T164539Z
+DTSTART;TZID=America/Los_Angeles:20261011T194100
+DTEND;TZID=America/Los_Angeles:20261011T201100
+SUMMARY:Low tide -0.67 ft — Barview / North Jetty (Tillamook Bay)
+DESCRIPTION:Predicted low tide of -0.67 ft (NOAA predictions). Station 9437585.
+LOCATION:Barview / North Jetty, Tillamook Bay, OR
+END:VEVENT
+END:VCALENDAR
