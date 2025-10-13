@@ -17,9 +17,8 @@
     </label>
     <div style="margin-top:8px;display:flex;gap:12px;align-items:center">
       <div id="station-meta" style="margin-top:8px;font-size:0.95rem;color:#333"></div>
+      <div style="margin-left:16px;color:#666;font-size:0.9rem">Stations loaded: {{stations_count}}</div>
     </div>
-    <!-- Map container (Leaflet) -->
-    <div id="map" style="height:360px;margin-top:12px;border:1px solid #ccc"></div>
     <label>Begin date
       <input type="date" name="begin_date" value="2025-10-11">
     </label>
@@ -39,76 +38,136 @@
   </form>
   <div style="color:#b00;margin-top:10px">{{stations_error}}</div>
 </body>
-<!-- Leaflet CSS and JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+4mF7u2QXKkYf7hE2n3vYx0wqv0s8m4b0i8a6lz3w=" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-VzG2aIY0YgqF0/0d1iV8g8s1q2hE1qvM1VfF0s0v0h8=" crossorigin=""></script>
+<script type="application/json" id="stations-data">{{stations_json}}</script>
 <script>
-const stations = JSON.parse(`{{stations_json}}` || '[]');
+// Try to parse the full embedded stations JSON. If it fails (too large or malformed),
+// fall back to a smaller preview that the server also provides.
+let stations = [];
+let byState = {};
+let stateList = [];
+let initialized = false;
 const stateSelect = document.getElementById('state-select');
 const stationSelect = document.getElementById('station-select');
 const meta = document.getElementById('station-meta');
 
-function getCoord(s) {
-  const lat = parseFloat(s.latitude || s.lat || (s.geometry && s.geometry.coordinates && s.geometry.coordinates[1]) || NaN);
-  const lon = parseFloat(s.longitude || s.lon || (s.geometry && s.geometry.coordinates && s.geometry.coordinates[0]) || NaN);
-  if (!isFinite(lat) || !isFinite(lon)) return null;
-  return {lat, lon};
+function loadEmbeddedStations() {
+  const dataScript = document.getElementById('stations-data');
+  const raw = dataScript ? dataScript.textContent.trim() : '';
+  try {
+    if (raw && raw.length > 2) {
+      stations = JSON.parse(raw);
+      return stations.length > 0;
+    }
+  } catch (e) {
+    console.warn('Failed to parse embedded stations JSON', e);
+  }
+  stations = [];
+  return false;
 }
 
+function ensureStationsLoaded() {
+  if (!stations.length) {
+    meta.innerHTML = '<em>Loading stations…</em>';
+  }
+}
+
+const haveEmbedded = loadEmbeddedStations();
+if (haveEmbedded) {
+  initStationUI();
+} else {
+  ensureStationsLoaded();
+}
+
+// Fetch stations data from the server-side endpoint. This keeps the HTML small
+// and avoids issues with embedding very large JSON blobs inside templates.
+fetch('/stations.json')
+  .then(r => r.json())
+  .then(data => {
+    if (data && Array.isArray(data.stations) && data.stations.length) {
+      stations = data.stations;
+      initStationUI();
+      return;
+    }
+    if (data && data.error) {
+      console.error('stations.json error', data.error);
+    } else {
+      console.warn('stations.json returned unexpected payload', data);
+    }
+    if (!haveEmbedded) {
+      stations = [];
+      initStationUI();
+    }
+  })
+  .catch(err => {
+    console.error('Failed to fetch /stations.json', err);
+    if (!haveEmbedded) {
+      stations = [];
+      initStationUI();
+    }
+  });
 function labelFor(s) {
   const id = s.id || s.stationId || s.station || '';
   const name = s.name || s.stationName || '';
   return `${id} — ${name}`;
 }
 
-// Map setup
-const map = L.map('map').setView([37.8, -122.4], 4);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
-let stationMarker = null;
-
-function setStationOnMap(s) {
-  const c = getCoord(s); if (!c) return;
-  if (stationMarker) { stationMarker.setLatLng([c.lat, c.lon]); } else { stationMarker = L.marker([c.lat, c.lon], {title: labelFor(s)}).addTo(map); }
-  map.setView([c.lat, c.lon], 10);
-}
-
 function showStationMetaByObj(s) {
   if (!s) { meta.innerHTML = ''; return; }
-  const coord = getCoord(s);
-  let html = `<strong>${labelFor(s)}</strong><br>`;
-  if (coord) html += `Lat: ${coord.lat.toFixed(5)}, Lon: ${coord.lon.toFixed(5)} — <a href="https://www.openstreetmap.org/?mlat=${coord.lat}&mlon=${coord.lon}#map=12/${coord.lat}/${coord.lon}" target="_blank">Open map</a>`;
-  meta.innerHTML = html;
+  meta.innerHTML = `<strong>${labelFor(s)}</strong>`;
 }
 
-// Build state list -> stations map
-const byState = {};
-for (const s of stations) {
-  const state = s.state || (s.address && s.address.state) || 'N/A';
-  if (!byState[state]) byState[state] = [];
-  byState[state].push(s);
+function rebuildStateMaps() {
+  byState = {};
+  for (const s of stations) {
+    const state = s.state || (s.address && s.address.state) || 'N/A';
+    if (!byState[state]) byState[state] = [];
+    byState[state].push(s);
+  }
+  stateList = Object.keys(byState).sort();
 }
-
-// Populate state select
-const states = Object.keys(byState).sort();
-stateSelect.innerHTML = states.map(st => `<option value="${st}">${st}</option>`).join('\n');
 
 function populateStationsForState(state) {
   const list = byState[state] || [];
   stationSelect.innerHTML = list.map(s => `<option value="${s.id || s.stationId || s.station}">${labelFor(s)}</option>`).join('\n');
-  // update metadata/map for first station if exists
-  if (list.length) { showStationMetaByObj(list[0]); setStationOnMap(list[0]); }
+  if (list.length) {
+    const first = list[0];
+    const firstValue = first.id || first.stationId || first.station || '';
+    if (firstValue) {
+      stationSelect.value = firstValue;
+    }
+    showStationMetaByObj(first);
+  } else {
+    stationSelect.value = '';
+    showStationMetaByObj(null);
+  }
 }
 
-stateSelect.addEventListener('change', (e) => populateStationsForState(e.target.value));
-stationSelect.addEventListener('change', (e) => {
-  const val = e.target.value;
-  const state = stateSelect.value;
-  const s = (byState[state] || []).find(x => (x.id||x.stationId||x.station) == val);
-  showStationMetaByObj(s);
-  setStationOnMap(s);
-});
+function initStationUI() {
+  rebuildStateMaps();
+  if (!stateList.length) {
+    stateSelect.innerHTML = '<option value="">No stations available</option>';
+    stationSelect.innerHTML = '';
+    meta.innerHTML = '<em>No station data loaded.</em>';
+    return;
+  }
+  stateSelect.innerHTML = stateList.map(st => `<option value="${st}">${st}</option>`).join('\n');
 
-// initialize selects
-if (states.length) { stateSelect.value = states[0]; populateStationsForState(states[0]); }
+  const initialState = stateList.includes(stateSelect.value) ? stateSelect.value : stateList[0];
+  stateSelect.value = initialState;
+  populateStationsForState(initialState);
+
+  if (!initialized) {
+    stateSelect.addEventListener('change', (e) => {
+      populateStationsForState(e.target.value);
+    });
+    stationSelect.addEventListener('change', (e) => {
+      const val = e.target.value;
+      const currentState = stateSelect.value;
+      const s = (byState[currentState] || []).find(x => (x.id||x.stationId||x.station) == val);
+      showStationMetaByObj(s);
+    });
+    initialized = true;
+  }
+}
 </script>
 </html>

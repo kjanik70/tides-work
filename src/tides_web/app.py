@@ -2,12 +2,14 @@
 
 Uses only the Python standard library so you can run it without installing extra packages.
 """
-from wsgiref.simple_server import make_server
 from urllib import request, parse
 import json
 import datetime
 from zoneinfo import ZoneInfo
 import html
+from pathlib import Path
+import calendar
+from collections import defaultdict
 
 MDAPI_STATIONS_URL = "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json"
 DATAGETTER_URL = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter"
@@ -75,14 +77,23 @@ def filter_low_tides(predictions, start_hour, end_hour, min_level):
     return events
 
 
+TEMPLATES_DIR = Path(__file__).resolve().parents[2] / "templates"
+
+
 def render_template(name, **context):
-    path = f"/home/kjanik/tides-work/templates/{name}"
+    path = TEMPLATES_DIR / name
     with open(path, "r", encoding="utf-8") as f:
         tmpl = f.read()
     # simple {{ var }} replacement for a few known fields
     # Provide a minimal templating: replace {{key}} with html-escaped str(value)
     # but allow raw insertion for known HTML fragments (options, table rows, errors)
-    raw_keys = {"stations_markup", "table_rows", "stations_error"}
+    raw_keys = {
+        "stations_markup",
+        "table_rows",
+        "stations_error",
+        "stations_json",
+        "calendar_markup",
+    }
     out = tmpl
     for k, v in context.items():
         placeholder = "{{" + k + "}}"
@@ -107,7 +118,20 @@ def application(environ, start_response):
         else:
             stations_error = ""
 
-        body = render_template("index.html", stations_markup=build_stations_options(stations), stations_error=stations_error)
+        # Provide stations markup and embed stations JSON for client-side interactions
+        stations_markup = build_stations_options(stations)
+        stations_json = json.dumps(stations)
+        stations_count = len(stations)
+        # small preview to use as a safe fallback in the browser if the full JSON is problematic
+        stations_preview = json.dumps(stations[:200])
+        body = render_template(
+            "index.html",
+            stations_markup=stations_markup,
+            stations_error=stations_error,
+            stations_json=stations_json,
+            stations_count=stations_count,
+            stations_preview=stations_preview,
+        )
         start_response("200 OK", [("Content-Type", "text/html; charset=utf-8")])
         return [body.encode("utf-8")]
 
@@ -135,23 +159,43 @@ def application(environ, start_response):
         eh = int(end_time.split(':')[0])
 
         try:
+            begin_date = datetime.date.fromisoformat(begin)
+            end_date = datetime.date.fromisoformat(end)
+        except ValueError:
+            start_response('400 Bad Request', [('Content-Type', 'text/plain')])
+            return [b'Invalid begin_date or end_date; expected YYYY-MM-DD']
+
+        if end_date < begin_date:
+            start_response('400 Bad Request', [('Content-Type', 'text/plain')])
+            return [b'end_date must be on or after begin_date']
+
+        try:
             data = fetch_predictions(station, begin, end)
             predictions = data.get('predictions', [])
+            print(f"DEBUG: Fetched {len(predictions)} predictions for station {station}, dates {begin}-{end}")
             events = filter_low_tides(predictions, sh, eh, min_level)
+            print(f"DEBUG: Filtered {len(events)} events with start_hour={sh}, end_hour={eh}, min_level={min_level}")
         except Exception as e:
             start_response('500 Internal Server Error', [('Content-Type', 'text/plain')])
             return [f'Error fetching predictions: {e}'.encode('utf-8')]
 
-        # Build simple results markup
-        rows = []
-        for ev in events:
-            dt = ev['dt']
-            rows.append(f"<tr><td>{html.escape(dt.strftime('%Y-%m-%d'))}</td><td>{html.escape(dt.strftime('%H:%M %Z'))}</td><td>{ev['height']:.2f}</td></tr>")
-        table = "\n".join(rows) if rows else "<tr><td colspan=3>No matching events</td></tr>"
+        calendar_markup = build_calendar_markup(events, begin_date, end_date)
 
-        body = render_template('results.html', table_rows=table, station=station, begin=begin, end=end)
+        body = render_template('results.html', calendar_markup=calendar_markup, station=station, begin=begin, end=end)
         start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
         return [body.encode('utf-8')]
+
+    # Serve stations as a separate JSON endpoint to avoid embedding a very large
+    # JSON blob into the HTML page (avoid quoting/escaping issues in templates).
+    if path == '/stations.json' and method == 'GET':
+        try:
+            stations = fetch_stations()
+            body = json.dumps({'stations': stations})
+            start_response('200 OK', [('Content-Type', 'application/json; charset=utf-8')])
+            return [body.encode('utf-8')]
+        except Exception as e:
+            start_response('500 Internal Server Error', [('Content-Type', 'application/json; charset=utf-8')])
+            return [json.dumps({'error': str(e)}).encode('utf-8')]
 
     start_response('404 Not Found', [('Content-Type', 'text/plain')])
     return [b'Not found']
@@ -171,7 +215,65 @@ def build_stations_options(stations):
     return '\n'.join(out)
 
 
-if __name__ == '__main__':
-    print("Starting server on http://localhost:8000 ...")
-    with make_server('127.0.0.1', 8000, application) as httpd:
-        httpd.serve_forever()
+def build_calendar_markup(events, begin_date, end_date):
+    """Return HTML representing monthly calendars highlighting matching events."""
+    events_by_date = defaultdict(list)
+    for ev in events:
+        dt = ev.get("dt")
+        if not dt:
+            continue
+        events_by_date[dt.date()].append(ev)
+
+    current = begin_date.replace(day=1)
+    last_month = end_date.replace(day=1)
+    cal = calendar.Calendar(firstweekday=6)  # Sunday first
+    month_sections = []
+    day_headers = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+    while current <= last_month:
+        year, month = current.year, current.month
+        weeks = cal.monthdatescalendar(year, month)
+        week_rows = []
+        for week in weeks:
+            cells = []
+            for day in week:
+                classes = ["day"]
+                if day.month != month:
+                    classes.append("other-month")
+                cell_body = []
+                if begin_date <= day <= end_date and day in events_by_date:
+                    classes.append("has-event")
+                    entries = []
+                    for ev in events_by_date[day]:
+                        ev_dt = ev.get("dt")
+                        ev_height = ev.get("height")
+                        if not isinstance(ev_height, (int, float)) or not ev_dt:
+                            continue
+                        time_label = ev_dt.strftime("%I:%M %p").lstrip("0")
+                        entries.append(f"{time_label}  {ev_height:.2f} ft")
+                    if entries:
+                        cell_body.append(f"<div class=\"events\">{'<br>'.join(entries)}</div>")
+                cells.append(
+                    f"<td class=\"{' '.join(classes)}\">"
+                    f"<div class=\"date-label\">{day.day}</div>"
+                    f"{''.join(cell_body)}"
+                    "</td>"
+                )
+            week_rows.append("<tr>" + "".join(cells) + "</tr>")
+        month_sections.append(
+            f"<section class=\"month\">"
+            f"<h2>{calendar.month_name[month]} {year}</h2>"
+            f"<table class=\"calendar\">"
+            f"<thead><tr>{''.join(f'<th>{name}</th>' for name in day_headers)}</tr></thead>"
+            f"<tbody>{''.join(week_rows)}</tbody>"
+            "</table>"
+            "</section>"
+        )
+        if month == 12:
+            current = datetime.date(year + 1, 1, 1)
+        else:
+            current = datetime.date(year, month + 1, 1)
+
+    if not month_sections:
+        return "<p>No matching events found.</p>"
+    return "\n".join(month_sections)

@@ -3,17 +3,23 @@
 <head>
   <meta charset="utf-8">
   <title>Results for {{station}}</title>
-  <style>body{font-family:Arial,Helvetica,sans-serif;margin:24px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:6px}</style>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:24px}
+    .calendar{border-collapse:collapse;width:100%;table-layout:fixed;margin-top:12px}
+    .calendar th{padding:6px;border-bottom:2px solid #333;text-align:center}
+    .calendar td{border:1px solid #ccc;vertical-align:top;height:100px;position:relative;padding:6px;background:#fff;transition:background 0.2s}
+    .calendar td.other-month{background:#f7f7f7;color:#999}
+    .calendar td.has-event{background:#c6f6c6}
+    .calendar .date-label{font-weight:bold;font-size:0.9rem}
+    .calendar .events{margin-top:8px;font-size:0.85rem;line-height:1.25;text-align:left;font-weight:bold}
+    .month{margin-bottom:24px}
+    h2{margin-bottom:8px}
+  </style>
 </head>
 <body>
   <h1>Low tides for {{station}}</h1>
   <p>Range: {{begin}} → {{end}}</p>
-  <table>
-    <thead><tr><th>Date</th><th>Local time</th><th>Height (ft)</th></tr></thead>
-    <tbody>
-      {{table_rows}}
-    </tbody>
-  </table>
+  {{calendar_markup}}
   <p><a href="/">Back</a></p>
 </body>
 </html>
