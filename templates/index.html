@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tide Finder</title>
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:24px;}label{display:block;margin-top:8px;}select,input{padding:6px;margin-top:4px;}table{border-collapse:collapse;width:100%;margin-top:12px}td,th{border:1px solid #ccc;padding:6px}button{margin-top:10px;padding:8px 12px}</style>
+</head>
+<body>
+  <h1>Tide Finder</h1>
+  <p>Choose a station, date range, time-of-day window, and minimum low tide level to find low tides.</p>
+  <form method="post" action="/results">
+    <label>Station
+      <select name="station">
+        {{stations_markup}}
+      </select>
+    </label>
+    <label>Begin date
+      <input type="date" name="begin_date" value="2025-10-11">
+    </label>
+    <label>End date
+      <input type="date" name="end_date" value="2026-10-11">
+    </label>
+    <label>Start time of day
+      <input type="time" name="start_time" value="08:00">
+    </label>
+    <label>End time of day
+      <input type="time" name="end_time" value="19:00">
+    </label>
+    <label>Minimum low tide level (feet)
+      <input type="number" step="0.01" name="min_level" value="0">
+    </label>
+    <button type="submit">Find low tides</button>
+  </form>
+  <div style="color:#b00;margin-top:10px">{{stations_error}}</div>
+</body>
+</html>
