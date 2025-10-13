@@ -10,10 +10,17 @@
   <p>Choose a station, date range, time-of-day window, and minimum low tide level to find low tides.</p>
   <form method="post" action="/results">
     <label>Station
-      <select name="station">
-        {{stations_markup}}
-      </select>
+      <!-- Searchable input for stations; hidden input holds selected station id for the form -->
+      <input type="text" id="station-search" placeholder="Search station by id or name" autocomplete="off" style="width:100%;padding:6px;">
+      <input type="hidden" name="station" id="station-id">
+      <div id="suggestions" style="border:1px solid #ccc;max-height:220px;overflow:auto;background:#fff;display:none;position:relative;z-index:10"></div>
     </label>
+    <div style="margin-top:8px;display:flex;gap:12px;align-items:center">
+      <button type="button" id="use-location">Use my location (find nearest station)</button>
+      <div id="station-meta" style="margin-top:8px;font-size:0.95rem;color:#333"></div>
+    </div>
+    <!-- Map container (Leaflet) -->
+    <div id="map" style="height:360px;margin-top:12px;border:1px solid #ccc"></div>
     <label>Begin date
       <input type="date" name="begin_date" value="2025-10-11">
     </label>
@@ -33,4 +40,126 @@
   </form>
   <div style="color:#b00;margin-top:10px">{{stations_error}}</div>
 </body>
+<!-- Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+4mF7u2QXKkYf7hE2n3vYx0wqv0s8m4b0i8a6lz3w=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-VzG2aIY0YgqF0/0d1iV8g8s1q2hE1qvM1VfF0s0v0h8=" crossorigin=""></script>
+<script>
+const stations = JSON.parse(`{{stations_json}}` || '[]');
+const search = document.getElementById('station-search');
+const hidden = document.getElementById('station-id');
+const sugg = document.getElementById('suggestions');
+const meta = document.getElementById('station-meta');
+
+function getCoord(s) {
+  const lat = parseFloat(s.latitude || s.lat || (s.geometry && s.geometry.coordinates && s.geometry.coordinates[1]) || NaN);
+  const lon = parseFloat(s.longitude || s.lon || (s.geometry && s.geometry.coordinates && s.geometry.coordinates[0]) || NaN);
+  if (!isFinite(lat) || !isFinite(lon)) return null;
+  return {lat, lon};
+}
+
+// Build a label for suggestions
+function labelFor(s) {
+  const id = s.id || s.stationId || s.station || '';
+  const name = s.name || s.stationName || '';
+  const state = s.state ? ` (${s.state})` : '';
+  return `${id} — ${name}${state}`;
+}
+
+function showStationMetaByObj(s) {
+  if (!s) { meta.innerHTML = ''; return; }
+  const coord = getCoord(s);
+  let html = `<strong>${labelFor(s)}</strong><br>`;
+  if (coord) {
+    html += `Lat: ${coord.lat.toFixed(5)}, Lon: ${coord.lon.toFixed(5)} — <a href="https://www.openstreetmap.org/?mlat=${coord.lat}&mlon=${coord.lon}#map=12/${coord.lat}/${coord.lon}" target="_blank">Open map</a>`;
+  }
+  meta.innerHTML = html;
+}
+
+// Map setup
+const map = L.map('map').setView([37.8, -122.4], 4);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+let stationMarker = null;
+let userMarker = null;
+
+function setStationOnMap(s) {
+  const c = getCoord(s); if (!c) return;
+  if (stationMarker) { stationMarker.setLatLng([c.lat, c.lon]); } else { stationMarker = L.marker([c.lat, c.lon], {title: labelFor(s)}).addTo(map); }
+  map.setView([c.lat, c.lon], 12);
+}
+
+function setUserOnMap(lat, lon) {
+  if (userMarker) { userMarker.setLatLng([lat, lon]); } else { userMarker = L.marker([lat, lon], {title: 'Your location', icon: L.icon({iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png', iconSize:[25,41], iconAnchor:[12,41]}) }).addTo(map); }
+}
+
+// Suggestion rendering
+function renderSuggestions(list) {
+  if (!list.length) { sugg.style.display = 'none'; return; }
+  sugg.innerHTML = '';
+  for (const s of list.slice(0, 40)) {
+    const div = document.createElement('div');
+    div.style.padding = '6px';
+    div.style.cursor = 'pointer';
+    div.textContent = labelFor(s);
+    div.addEventListener('click', () => {
+      hidden.value = s.id || s.stationId || s.station || '';
+      search.value = labelFor(s);
+      sugg.style.display = 'none';
+      showStationMetaByObj(s);
+      setStationOnMap(s);
+    });
+    sugg.appendChild(div);
+  }
+  sugg.style.display = 'block';
+}
+
+search.addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  if (!q) { sugg.style.display = 'none'; return; }
+  // match id or name
+  const results = stations.filter(s => {
+    const id = (s.id||s.stationId||s.station||'').toString().toLowerCase();
+    const name = (s.name||s.stationName||'').toString().toLowerCase();
+    return id.includes(q) || name.includes(q);
+  });
+  renderSuggestions(results);
+});
+
+// When clicking outside, hide suggestions
+document.addEventListener('click', (ev) => {
+  if (!document.getElementById('suggestions').contains(ev.target) && ev.target !== search) {
+    sugg.style.display = 'none';
+  }
+});
+
+// Use my location: find nearest station and select it
+document.getElementById('use-location').addEventListener('click', () => {
+  if (!navigator.geolocation) { alert('Geolocation not supported'); return; }
+  navigator.geolocation.getCurrentPosition((pos) => {
+    const lat = pos.coords.latitude; const lon = pos.coords.longitude;
+    setUserOnMap(lat, lon);
+    // find nearest station
+    let best = null; let bestd = Infinity;
+    for (const s of stations) {
+      const c = getCoord(s); if (!c) continue;
+      const dlat = c.lat - lat; const dlon = c.lon - lon; const d = dlat*dlat + dlon*dlon;
+      if (d < bestd) { bestd = d; best = s; }
+    }
+    if (best) {
+      hidden.value = best.id || best.stationId || best.station || '';
+      search.value = labelFor(best);
+      showStationMetaByObj(best);
+      setStationOnMap(best);
+    } else alert('No station with coordinates found');
+  }, (err) => alert('Geolocation error: ' + err.message));
+});
+
+// Initialize: if there's a preselected station (hidden input), show it on map
+if (hidden.value) {
+  const s = stations.find(x => (x.id||x.stationId||x.station) == hidden.value);
+  if (s) { search.value = labelFor(s); showStationMetaByObj(s); setStationOnMap(s); }
+}
+</script>
 </html>
