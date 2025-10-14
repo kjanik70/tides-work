@@ -172,9 +172,7 @@ def application(environ, start_response):
         try:
             data = fetch_predictions(station, begin, end)
             predictions = data.get('predictions', [])
-            print(f"DEBUG: Fetched {len(predictions)} predictions for station {station}, dates {begin}-{end}")
             events = filter_low_tides(predictions, sh, eh, min_level)
-            print(f"DEBUG: Filtered {len(events)} events with start_hour={sh}, end_hour={eh}, min_level={min_level}")
         except Exception as e:
             start_response('500 Internal Server Error', [('Content-Type', 'text/plain')])
             return [f'Error fetching predictions: {e}'.encode('utf-8')]

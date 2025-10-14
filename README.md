@@ -1,54 +1,28 @@
-Tides workspace
+Tides Web App
+=============
 
-This project contains utilities around `make_tillamook_neg_lows.py`.
+This repository provides a minimal web interface for exploring negative low tides via the NOAA tides and currents API. The app runs entirely on the Python standard library and renders HTML templates from the `templates/` directory.
 
-Quickstart (Linux / bash):
+Getting Started
+---------------
 
-1. Create and activate a virtual environment:
+1. (Optional) Create a virtual environment and activate it:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+2. Install any project dependencies (mainly for local tooling):
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Start the web app:
+   ```bash
+   python3 run_tides_web.py
+   ```
+4. Open the browser at [http://127.0.0.1:8000](http://127.0.0.1:8000) and use the interface to select a station, choose a date range, and review the calendar results.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
+Notes
+-----
 
-2. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Run the original script directly:
-
-```bash
-python make_tillamook_neg_lows.py
-```
-
-4. Or run via the package entrypoint (uses the repo copy of the script):
-
-```bash
-python -m tides.cli
-```
-
-Run tests:
-
-```bash
-pytest -q
-```
-
-Notes:
-- The package wrapper `tides.cli` uses runpy to execute the top-level script so you don't need to refactor the script to a module immediately.
-- If you want a proper importable API, consider moving logic from the script into `src/tides/` module functions.
-
-Web app
--------
-
-There is a tiny web app in `src/tides_web` that provides a simple UI to query the NOAA API and show low tides.
-
-Run locally:
-
-```bash
-python3 run_tides_web.py
-# then open http://127.0.0.1:8000 in your browser
-```
-
-The app uses only the standard library (urllib, wsgiref, zoneinfo) and reads templates from `templates/`.
+- The server binds to `127.0.0.1:8000` and will attempt to free the port automatically if another local process is using it.
+- Station metadata is fetched from NOAA at runtime; if the network is unavailable the app falls back to a bundled snapshot embedded in the page.

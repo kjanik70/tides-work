@@ -1,3 +1,2 @@
 click
-pytest
 python-dateutil
