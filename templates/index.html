@@ -40,134 +40,109 @@
 </body>
 <script type="application/json" id="stations-data">{{stations_json}}</script>
 <script>
-// Try to parse the full embedded stations JSON. If it fails (too large or malformed),
-// fall back to a smaller preview that the server also provides.
-let stations = [];
-let byState = {};
-let stateList = [];
-let initialized = false;
-const stateSelect = document.getElementById('state-select');
-const stationSelect = document.getElementById('station-select');
-const meta = document.getElementById('station-meta');
+(function(){
+  let stations = [];
+  let byState = {};
+  let stateList = [];
+  let initialized = false;
+  const stateSelect = document.getElementById('state-select');
+  const stationSelect = document.getElementById('station-select');
+  const meta = document.getElementById('station-meta');
 
-function loadEmbeddedStations() {
-  const dataScript = document.getElementById('stations-data');
-  const raw = dataScript ? dataScript.textContent.trim() : '';
-  try {
-    if (raw && raw.length > 2) {
-      stations = JSON.parse(raw);
-      return stations.length > 0;
+  function parseEmbedded(){
+    const el = document.getElementById('stations-data');
+    if(!el) return false;
+    const raw = el.textContent.trim();
+    if(!raw) return false;
+    try{
+      const parsed = JSON.parse(raw);
+      if(Array.isArray(parsed)) { stations = parsed; return true; }
+      if(parsed && Array.isArray(parsed.stations)) { stations = parsed.stations; return true; }
+    }catch(e){
+      console.warn('Failed to parse embedded stations JSON', e);
     }
-  } catch (e) {
-    console.warn('Failed to parse embedded stations JSON', e);
+    return false;
   }
-  stations = [];
-  return false;
-}
 
-function ensureStationsLoaded() {
-  if (!stations.length) {
-    meta.innerHTML = '<em>Loading stations…</em>';
+  function rebuildStateMaps(){
+    byState = {};
+    for(const s of stations){
+      const state = s.state || (s.address && s.address.state) || 'N/A';
+      (byState[state] = byState[state] || []).push(s);
+    }
+    stateList = Object.keys(byState).sort();
   }
-}
 
-const haveEmbedded = loadEmbeddedStations();
-if (haveEmbedded) {
-  initStationUI();
-} else {
-  ensureStationsLoaded();
-}
+  function labelFor(s){
+    const id = s && (s.id || s.stationId || s.station) || '';
+    const name = s && (s.name || s.stationName) || '';
+    return `${id} — ${name}`;
+  }
 
-// Fetch stations data from the server-side endpoint. This keeps the HTML small
-// and avoids issues with embedding very large JSON blobs inside templates.
-fetch('/stations.json')
-  .then(r => r.json())
-  .then(data => {
-    if (data && Array.isArray(data.stations) && data.stations.length) {
-      stations = data.stations;
-      initStationUI();
+  function showStationMeta(s){
+    if(!s){ meta.innerHTML = ''; return; }
+    const lat = s.lat || s.latitude || '';
+    const lng = s.lng || s.lon || s.longitude || '';
+    const osmLink = (lat && lng) ? `<a href="https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=10/${lat}/${lng}" target="_blank" rel="noopener">Open map</a>` : '';
+    meta.innerHTML = `<strong>${labelFor(s)}</strong>${osmLink ? ' — ' + osmLink : ''}`;
+  }
+
+  function populateStationsForState(state){
+    const list = byState[state] || [];
+    stationSelect.innerHTML = list.map(s=>`<option value="${s.id || s.stationId || s.station}">${labelFor(s)}</option>`).join('\n');
+    if(list.length){
+      stationSelect.value = stationSelect.querySelector('option')?.value || '';
+      showStationMeta(list[0]);
+    }else{
+      stationSelect.value = '';
+      showStationMeta(null);
+    }
+  }
+
+  function initStationUI(){
+    rebuildStateMaps();
+    if(!stateList.length){
+      stateSelect.innerHTML = '<option value="">No stations available</option>';
+      stationSelect.innerHTML = '';
+      meta.innerHTML = '<em>No station data loaded.</em>';
       return;
     }
-    if (data && data.error) {
-      console.error('stations.json error', data.error);
-    } else {
-      console.warn('stations.json returned unexpected payload', data);
+    stateSelect.innerHTML = stateList.map(st=>`<option value="${st}">${st}</option>`).join('\n');
+    const initialState = stateList.includes(stateSelect.value) ? stateList[0] : stateList[0];
+    stateSelect.value = initialState;
+    populateStationsForState(initialState);
+    if(!initialized){
+      stateSelect.addEventListener('change', e=> populateStationsForState(e.target.value));
+      stationSelect.addEventListener('change', e=>{
+        const val = e.target.value;
+        const curState = stateSelect.value;
+        const s = (byState[curState] || []).find(x => (x.id||x.stationId||x.station) == val);
+        showStationMeta(s);
+      });
+      initialized = true;
     }
-    if (!haveEmbedded) {
-      stations = [];
-      initStationUI();
-    }
-  })
-  .catch(err => {
-    console.error('Failed to fetch /stations.json', err);
-    if (!haveEmbedded) {
-      stations = [];
-      initStationUI();
-    }
-  });
-function labelFor(s) {
-  const id = s.id || s.stationId || s.station || '';
-  const name = s.name || s.stationName || '';
-  return `${id} — ${name}`;
-}
-
-function showStationMetaByObj(s) {
-  if (!s) { meta.innerHTML = ''; return; }
-  meta.innerHTML = `<strong>${labelFor(s)}</strong>`;
-}
-
-function rebuildStateMaps() {
-  byState = {};
-  for (const s of stations) {
-    const state = s.state || (s.address && s.address.state) || 'N/A';
-    if (!byState[state]) byState[state] = [];
-    byState[state].push(s);
   }
-  stateList = Object.keys(byState).sort();
-}
 
-function populateStationsForState(state) {
-  const list = byState[state] || [];
-  stationSelect.innerHTML = list.map(s => `<option value="${s.id || s.stationId || s.station}">${labelFor(s)}</option>`).join('\n');
-  if (list.length) {
-    const first = list[0];
-    const firstValue = first.id || first.stationId || first.station || '';
-    if (firstValue) {
-      stationSelect.value = firstValue;
-    }
-    showStationMetaByObj(first);
+  if(!parseEmbedded()){
+    meta.innerHTML = '<em>Loading stations…</em>';
   } else {
-    stationSelect.value = '';
-    showStationMetaByObj(null);
+    initStationUI();
   }
-}
 
-function initStationUI() {
-  rebuildStateMaps();
-  if (!stateList.length) {
-    stateSelect.innerHTML = '<option value="">No stations available</option>';
-    stationSelect.innerHTML = '';
-    meta.innerHTML = '<em>No station data loaded.</em>';
-    return;
-  }
-  stateSelect.innerHTML = stateList.map(st => `<option value="${st}">${st}</option>`).join('\n');
-
-  const initialState = stateList.includes(stateSelect.value) ? stateSelect.value : stateList[0];
-  stateSelect.value = initialState;
-  populateStationsForState(initialState);
-
-  if (!initialized) {
-    stateSelect.addEventListener('change', (e) => {
-      populateStationsForState(e.target.value);
+  fetch('/stations.json')
+    .then(r=>{ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(data=>{
+      if(Array.isArray(data.stations)) stations = data.stations;
+      else if(Array.isArray(data)) stations = data;
+      else if(data && Array.isArray(data.stations)) stations = data.stations;
+      else { console.warn('Unexpected stations.json payload', data); }
+      initStationUI();
+    })
+    .catch(err=>{
+      console.error('Failed to fetch /stations.json', err);
+      if(!initialized) initStationUI();
     });
-    stationSelect.addEventListener('change', (e) => {
-      const val = e.target.value;
-      const currentState = stateSelect.value;
-      const s = (byState[currentState] || []).find(x => (x.id||x.stationId||x.station) == val);
-      showStationMetaByObj(s);
-    });
-    initialized = true;
-  }
-}
+
+})();
 </script>
 </html>
